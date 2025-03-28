@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "com.euphony.better_item_frames.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "refmap": "better_item_frames.refmap.json",
+  "mixins": [
+    "ItemFrameMixin",
+    "ThrownPotionMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
