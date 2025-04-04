@@ -4,6 +4,7 @@ package com.euphony.better_item_frames.mixin;
 import java.util.List;
 
 import com.euphony.better_item_frames.api.ICustomItemFrame;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
@@ -19,13 +20,13 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ThrownPotion.class)
 public class ThrownPotionMixin {
-    @Inject(method = "applySplash(Ljava/lang/Iterable;Lnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"))
-    public void applyInvisibility(Iterable<MobEffectInstance> effectInstanceList, @Nullable Entity entity, CallbackInfo ci) {
+    @Inject(method = "applySplash(Lnet/minecraft/server/level/ServerLevel;Ljava/lang/Iterable;Lnet/minecraft/world/entity/Entity;)V", at = @At("HEAD"))
+    public void applyInvisibility(ServerLevel level, Iterable<MobEffectInstance> effects, Entity p_entity, CallbackInfo ci) {
         ThrownPotion potion = (ThrownPotion) (Object) this;
-        better_item_frames$handleInvisibility(effectInstanceList, potion);
+        better_item_frames$handleInvisibility(effects, potion);
     }
 
-    @Inject(method = "applyWater()V", at = @At("HEAD"))
+    @Inject(method = "applyWater(Lnet/minecraft/server/level/ServerLevel;)V", at = @At("HEAD"))
     private void applyWater(CallbackInfo ci) {
         ThrownPotion potion = (ThrownPotion) (Object) this;
         better_item_frames$handleWater(potion);
