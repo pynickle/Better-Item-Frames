@@ -6,7 +6,8 @@
   "refmap": "better_item_frames.refmap.json",
   "mixins": [
     "ItemFrameMixin",
-    "ThrownPotionMixin"
+    "AbstractThrownPotionMixin",
+    "ThrownSplashPotionMixin"
   ],
   "client": [
   ],
